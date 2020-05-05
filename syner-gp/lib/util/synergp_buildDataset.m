@@ -1,11 +1,5 @@
 function dataset = synergp_buildDataset(subject,subjectIndices,datasetDetails,inputStructure,outputMuscles)
 %% synergp utility: builds dataset
-%{
-dataset.X = N x p matrix of N observations and p inputs
-dataset.Y = N x 1 array of N observations of corresponding outputs
-dataset.subjectIndices = N x 1 array of observation corresponding subjects
-dataset.trial = N x 1 cell array of observation corresponding trial names
-%}
 
 % initialize
 dataset = struct('X',[],'Y',[],'subjectIndices',[],'trialname',{''},'task',{''});
