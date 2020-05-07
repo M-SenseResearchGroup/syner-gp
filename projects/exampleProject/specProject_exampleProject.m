@@ -57,7 +57,7 @@ muscleNames = {'lateral_gastrocnemius_right', 'tibialis_anterior_right', 'biceps
 %   -importer options can be set in the importer.options field
 
 importer.name = 'importMC10x_subjects';
-importer.options.dataset.name = 'synergpExampleDatset';
+importer.options.dataset.name = 'synergpExampleDataset';
 importer.options.dataset.path2MC10 = '';
 importer.options.dataset.subjects = {'synergpExampleSubject'};
 importer.options.importOptions.locations = muscleNames;
@@ -91,6 +91,13 @@ processor.options.high_order = 4;
 processor.options.low_cutoff = 6;
 processor.options.low_order = 4;
 processor.options.downsample = 250;
+
+% in some instances, one may already have processed data that is imported 
+% during the import stage and would not like to further process the data.
+% In this case one may use the identityProcessor. Again, if this approach
+% is used, users must make sure the importer manipulates the session
+% structure with the added subject field as shown above with all associated
+% elec fields (time, data, and sampling frequency)
           
 %% DATASET REDUCER
 
@@ -127,6 +134,11 @@ datasetReducer.maxNumberObservations = 7500;
 %
 %   (4) options structure, handles any reducer specific options that can be
 %   set in this specProject_ file
+
+% the output of the reducer is just an array of indices specifying the rows
+% in the training dataset m x n array (input (1) above) and likewise the
+% rows in the training dataset targets m x n array (input (2) above) to
+% keep for model training
 
 % the name of the reducer must be a folder in lib/reducers and there should
 % be a function with the same name in the folder. The folder may also
@@ -278,9 +290,22 @@ validation.keepAllResults = 1;
 % evaluator is a required field within validation. The evaluator must be a
 % folder within lib/evaluators which contains a function with the same
 % name.
-% performance assessment
-validation.evaluator.name = 'stdeval_v1';
+
+% users can create their own evaluators. evaluators take as input:
+%   (1) y_true: true time-series from test set
+%   (2) y_est: estimated output from GPML gp() function
+%   (3) y_var: estimate variance from GPML gp() function (not latent var)
+%   (4) options: structure, can use this to set evaluator options
+
+% the output from the evaluator is an evaluation structure.
+
+% example project uses stdeval_v2 which returns many different performance
+% metrics
+validation.evaluator.name = 'stdeval_v2';
 validation.evaluator.options = struct();
+
+% note that even if the evaluator does not use any options, options must
+% still be a field in the evaluator (see above)
 
 % report these metrics when available
 % must look up what metrics will be output by specified evaluator.name
