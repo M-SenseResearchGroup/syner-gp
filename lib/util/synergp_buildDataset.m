@@ -1,7 +1,6 @@
 function dataset = synergp_buildDataset(subject,subjectIndices,datasetDetails,inputStructure,outputMuscles)
 %% synergp utility: builds dataset
 
-
 % initialize
 dataset = struct('X',[],'Y',[],'subjectIndices',[],'trialname',{''},'task',{''});
 

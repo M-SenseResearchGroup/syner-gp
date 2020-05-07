@@ -7,12 +7,13 @@ function session = semgEnvelope_v1(session)
 Normalizes sEMG data by maximum value observed across all trials. 
 -Also provides the option to downsample after
 this processing.
+-uses Matlab's butter function to determine filter coefs (see bwfilt)
 
 -options:
     .hp_cutoff: high pass cutoff frequency
-    .hp_order: order of high pass butterworth filter
+    .hp_order: order of high pass butterworth filter (must be even)
     .lp_cutoff: low pass cutoff frequency
-    .lp_order: order of low pass butterworth filter
+    .lp_order: order of low pass butterworth filter (must be even)
     .downsample: frequency at which to downsample
 
 %}

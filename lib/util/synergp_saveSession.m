@@ -1,5 +1,6 @@
 function session = synergp_saveSession(session)
 %% synergp utility: save session structure
+
 if isfield(session,'saveSession')
     if isfield(session.saveSession,'directory')
         if strcmpi(session.saveSession.directory,'auto')

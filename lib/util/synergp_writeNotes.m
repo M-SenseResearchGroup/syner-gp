@@ -1,11 +1,15 @@
 function [] = synergp_writeNotes(options)
 %% synergp utility: generate .txt file of all syner-gp session notes
 %
+% synergp_writeNotes can be run with no input. In this case you will be
+% prompted to select the session struct (.mat file) that you want the notes
+% for. You will then be prompted for the location to save the notes to and
+% the filename to save the notes as (must be .txt extension).
+%
 % options has 3 fields:
 %   (1) session: session struct output from syner-gp
 %   (2) savedir: directory to save report to
 %   (3) savename: filename to save report as (will be .txt file)
-%
 
 if nargin == 0
     options = struct();

@@ -1,4 +1,6 @@
 function session = synergp_reportEvaluation(session,evaluation,ntabs)
+%% synergp utility: prints model evaluation results to command window
+
 tabs = string(repmat('\t',[1 ntabs]));
 if isfield(session.validation.evaluator,'reportEvaluation')
     report = 1;

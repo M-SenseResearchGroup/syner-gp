@@ -1,7 +1,6 @@
 function session = synergp_preTrainCheck(session)
 %% synergp utility:  correct potential errors before train/evaluation loop
 
-
 muscleNames = session.muscleNames;
 
 % for each subject

@@ -8,10 +8,25 @@ into training/testing sets and normalizes all time series by the set mean
 
 -options:
     .hp_cutoff: high pass cutoff frequency
+
     .hp_order: order of high pass butterworth filter
+
     .lp_cutoff: low pass cutoff frequency
+
     .lp_order: order of low pass butterworth filter
+
     .downsample: frequency at which to downsample
+
+    .split: cell array specifying how to split trial data into
+    training/testing data. For example, to train on 10% to 20% of the data 
+    in walk_trial1 and test on 40% to 50% of the data in walk_trial2 one
+    would do, split = {'walk_trial1','walk_train',0.1,0.2;...
+                       'walk_trial2','walk_test',0.4,0.5};
+    Then one could set:
+        trainingSetDetails = {'walk','walk_train',0,1}
+        testingSetDetails = {'walk','walk_test',0,1}
+    in the specProject_ file
+    
 
 %}
 
@@ -76,7 +91,7 @@ for s = 1:numel(subject)
                 ndata = length(e);
                 samps = round(split{ind(k),3} * ndata) : round(split{ind(k),4} * ndata);
                 
-                % split data and time (zero reference)
+                % split data, split time, reference time to first sample
                 esplit = e(samps);
                 timesplit = new_time(samps);
                 timesplit = timesplit - timesplit(1);

@@ -6,9 +6,6 @@ function evaluation = stdeval_v2(y_true,y_est,y_var,options)
 mean, and std dev of the y_true. Also includes std dev of error & absolute 
 error and the number of data points.
 
--all evaluators must have a single input struct options which at a minimum
-must contain a y_est field corresponding to the estimated output as well as
-a y_true field corresponding to the true output
 %}
 
 err = y_est - y_true;

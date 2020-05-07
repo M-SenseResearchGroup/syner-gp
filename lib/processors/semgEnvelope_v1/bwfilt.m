@@ -1,6 +1,6 @@
 function [ out ] = bwfilt(in,cf,sf,type,order)
 %Reed Gurchiek, 2018
-%   bwfilter uses MATLABs butter function to determine the transfer
+%   bwfilt uses MATLABs butter function to determine the transfer
 %   function coefficients to filter signal(s) in sampled at frequency sf by
 %   a specified order according to the specified filter type
 %   'low','high','bandpass','bandstop'.  The transfer function is

@@ -16,7 +16,9 @@ will be prompted to select it, but only one study may be specified in this
 way. To import subject data from multiple datasets, it must be specified in
 the importer.options.dataset(k).() parameters in specProject_()
 
--importMC10x_subjects calls importMC10x. This function
+-importMC10x_subjects calls importMC10x. This function has one input,
+importOptions. This structure is an option within the
+session.importer.options. See exampleProject for example.
 
 %}
 

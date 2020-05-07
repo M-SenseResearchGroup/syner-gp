@@ -1,5 +1,5 @@
 function session = synergp_train_evaluate(session)
-%% synergp utility: train-test-evaluate user specified gp models
+%% synergp utility: train-test-evaluate user specified synergy function models
 
 % for each iteration
 session = synergp_addnote(session,char(sprintf("\n-TRAINING AND EVALUATING MODELS:\n")),1);
