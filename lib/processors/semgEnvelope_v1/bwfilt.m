@@ -1,10 +1,14 @@
 function [ out ] = bwfilt(in,cf,sf,type,order)
 %Reed Gurchiek, 2018
-%   bwfilt uses MATLABs butter function to determine the transfer
+%   bwfilter uses MATLABs butter function to determine the transfer
 %   function coefficients to filter signal(s) in sampled at frequency sf by
 %   a specified order according to the specified filter type
 %   'low','high','bandpass','bandstop'.  The transfer function is
 %   implemented in filtfilt to remove phase shift (i.e. filter is zero lag)
+%
+%   bwfilt automatically handles order and cutoff frequency adjustment for
+%   double pass in filtfit: order is halved and cutoff frequency is
+%   adjusted as per eq 1 in Robertson and Dowling (2003)
 %
 %---------------------------INPUTS-----------------------------------------
 %
@@ -61,11 +65,14 @@ if nargin > 4
 else
     order = 2;
 end
+
+% adjust filter cutoff for forward-backward (double) pass
+cf = cf / (sqrt(2)-1)^(1/2/order); % Robertson and Dowling (2003) eq 1
     
 % get transfer fxn coefs
 [b,a] = butter(order,2*cf/sf,type);
 
-% transpose to adjust for filtfilt?
+% transpose to adjust for filtfilt
 [r,c] = size(in);
 if c > r; in = in'; end
 
