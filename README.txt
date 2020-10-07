@@ -1,8 +1,12 @@
 Toolbox: syner-gp
 Author: Reed Gurchiek, rgurchiek@gmail.com
+
+For use of this toolbox please cite: R. D. Gurchiek, A. T. Ursiny and R. S. McGinnis, "A Gaussian Process Model of Muscle Synergy Functions for Estimating Unmeasured Muscle Excitations Using a Measured Subset," in IEEE Transactions on Neural Systems and Rehabilitation Engineering, doi: 10.1109/TNSRE.2020.3028052.
+
 Requirements: MATLAB R2019 or later, MATLAB Signal Processing Toolbox, GPML Toolbox (Carl E. Rasmussen and Hannes Nickisch, "Gaussian Processes for Machine Learning (GPML) Toolbox," Journal of Machine Learning Research, vol. 11, no. 100, pp. 3011-3015, 2010. http://www.gaussianprocess.org/gpml/code/matlab/doc/)
 
-Description: syner-gp streamlines the development of muscle synergy function models which describe the relationship between excitations of a subset of 'input' muscles and an output muscle.
+Description: syner-gp streamlines the development of muscle synergy function models which describe the relationship between excitations of a subset of 'input' muscles and an output muscle. For theoretical development and validation see, R. D. Gurchiek, A. T. Ursiny and R. S. McGinnis, "A Gaussian Process Model of Muscle Synergy Functions for Estimating Unmeasured Muscle Excitations Using a Measured Subset," in IEEE Transactions on Neural Systems and Rehabilitation Engineering, doi: 10.1109/TNSRE.2020.3028052.
+
 The syner-gp toolbox essentially organizes data in accordance with the notion of a synergy function so that a Gaussian process regression model can be developed for function approximation.
 All aspects of GPR model training is performed using the GPML toolbox. It is recommended that users first become especially familiar with this toolbox before using syner-gp.
 
